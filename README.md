@@ -3,14 +3,12 @@
 This is a work-in-progress [Zephyr](https://www.zephyrproject.org/)-based firmware for the
 [PineTime](https://www.pine64.org/pinetime/) smartwatch focused on low power consumption.
 
-It started as a fork of najnesnaj's [firmware toolkit](https://github.com/najnesnaj/pinetime-zephyr)
-and is inspired by [PineTime Hermes](https://github.com/Dejvino/pinetime-hermes-firmware).
+It started as a fork of endian-albin's [pinetime-hypnos](https://github.com/endian-albin/pinetime-hypnos) and
+for now it still is nothing more (have to look for another name sometime; at least when the changes are getting
+bit enough).
+The original pinetime-hypnos was still the best project to start with.
 
 <img src="hypnos/hypnos-photo.png" title="Background image: Night and Sleep by Evelyn De Morgan (1878)" width="240px" height="240px">
-
-> **Hypnos**, son of Night and Darkness</br>
-> He is said to be a calm and gentle god, as he helps humans in need and, due to their sleep, owns
-> half of their lives.<sup>[1](https://en.wikipedia.org/wiki/Hypnos)</sup>
 
 ## Features
 
@@ -18,9 +16,9 @@ and is inspired by [PineTime Hermes](https://github.com/Dejvino/pinetime-hermes-
 - [x] Low power consumption: 1.38 mA in idle mode (1.28 mA with the heart rate sensor disconnected), which gives a battery life of more than five days.
 - [x] Battery status: get state of charge and whether it's charging
 - [x] Clock: accurately increment current time
-- [x] Button: press to start time synchronization with Bluetooth-connected device
+- [x] Button: wake up display
 - [x] Touch sensor: tap to light up the display
-- [x] Graphics: show background image, time, date, battery and Bluetooth status using LittlevGL
+- [x] Graphics: removed background image, time, date, battery and Bluetooth status using LittlevGL
 - [x] Optional debug output via JLink RTT
 - [ ] Show notifications from Bluetooth-connected device
 - [ ] Set alarm
@@ -38,7 +36,7 @@ instead of the ones in the guide:
 ```
 $ mkdir ~/pinetime-hypnos
 $ cd ~/pinetime-hypnos
-$ west init -m https://github.com/endian-albin/pinetime-hypnos
+$ west init -m https://github.com/max00/pinetime-hypnos
 $ west update
 ```
 
@@ -55,6 +53,13 @@ Build and install the application:
 $ west build -b pinetime hypnos
 $ west flash
 ```
+
+## Lookup for more informations
+Arduino project, at least it sounds promising:
+https://github.com/atc1441/ATCwatch
+
+mbed project - according to the gif it should support touch position detection
+https://github.com/sethitow/mbed-pinetime
 
 ## Copying
 

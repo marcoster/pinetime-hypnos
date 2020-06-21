@@ -8,6 +8,7 @@
  */
 
 #include <zephyr.h>
+#include <zephyr/types.h>
 #include <stdint.h>
 #include <drivers/gpio.h>
 #include <drivers/adc.h>
@@ -24,7 +25,7 @@
 
 /* ********** ********** VARIABLES ********** ********** */
 static struct device* percentage_dev;
-static s16_t data[1];
+static int16_t data[1];
 static uint32_t percentage;
 static bool charging;
 /* ********** ********** ********** ********** ********** */
@@ -32,10 +33,10 @@ static bool charging;
 /* ********** ********** STRUCTS ********** **********  */
 struct battery_level_point {
 	/** Remaining life at #lvl_mV. */
-	u16_t lvl_pptt;
+	uint16_t lvl_pptt;
 
 	/** Battery voltage at #lvl_pptt remaining life. */
-	u16_t lvl_mV;
+	uint16_t lvl_mV;
 };
 
 static const struct battery_level_point lipo[] = {
@@ -97,7 +98,7 @@ bool battery_get_charging_status()
         return charging;
 }
 
-uint32_t battery_raw_to_mv(s16_t raw)
+uint32_t battery_raw_to_mv(int16_t raw)
 {
 	return (DIVIDER*600*(((uint32_t)raw*4*1000) >> RESOLUTION))/1000;
 }
